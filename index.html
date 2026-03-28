@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EkDantaya Dental Clinic – Dr. Yashshree Nagargoje</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --teal:        #0E7C7B;
+    --teal-light:  #16A8A6;
+    --teal-pale:   #C8EEEE;
+    --coral:       #E8513A;
+    --coral-light: #FF7057;
+    --coral-pale:  #FFE0DB;
+    --gold:        #E6A817;
+    --gold-light:  #FFD166;
+    --gold-pale:   #FFF3CC;
+    --purple:      #7B4FBF;
+    --purple-pale: #EDE0FF;
+    --green:       #2D9E5F;
+    --green-pale:  #D4F0E3;
+    --cream:       #FDFAF5;
+    --warm-white:  #FFFFFF;
+    --text-dark:   #1A1A2E;
+    --text-mid:    #4A4A68;
+    --text-light:  #8888AA;
+    --border:      rgba(14,124,123,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 6vw;
+    background: rgba(253,250,245,0.95);
+    backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--teal-pale);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--teal); letter-spacing: 0.02em; }
+  .nav-logo span { color: var(--coral); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; font-size: 0.86rem; font-weight: 500; color: var(--text-mid); letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--coral) 0%, var(--coral-light) 100%) !important;
+    color: white !important; padding: 10px 22px; border-radius: 50px;
+    font-weight: 600 !important; box-shadow: 0 4px 14px rgba(232,81,58,0.35);
+    transition: all 0.25s !important;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(232,81,58,0.45) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--teal); border-radius: 2px; }
+
+  /* ── BUTTONS ── */
+  .btn-coral {
+    background: linear-gradient(135deg, var(--coral), var(--coral-light));
+    color: white; padding: 14px 34px; border-radius: 50px;
+    font-size: 0.95rem; font-weight: 600; text-decoration: none;
+    display: inline-block; transition: all 0.25s;
+    box-shadow: 0 6px 20px rgba(232,81,58,0.35);
+  }
+  .btn-coral:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(232,81,58,0.45); }
+  .btn-teal {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    color: white; padding: 14px 34px; border-radius: 50px;
+    font-size: 0.95rem; font-weight: 600; text-decoration: none;
+    display: inline-block; transition: all 0.25s;
+    box-shadow: 0 6px 20px rgba(14,124,123,0.35);
+  }
+  .btn-teal:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(14,124,123,0.45); }
+  .btn-white {
+    background: white; color: var(--teal); padding: 14px 34px; border-radius: 50px;
+    font-size: 0.95rem; font-weight: 600; text-decoration: none;
+    display: inline-block; transition: all 0.25s;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--text-dark); padding: 14px 34px; border-radius: 50px;
+    font-size: 0.95rem; font-weight: 600; text-decoration: none;
+    display: inline-block; transition: all 0.25s;
+    box-shadow: 0 6px 20px rgba(230,168,23,0.4);
+  }
+  .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(230,168,23,0.5); }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 100px 8vw; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--coral);
+    display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;
+  }
+  .section-label::after { content: ''; flex: 0 0 28px; height: 2px; background: var(--coral); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    line-height: 1.2; color: var(--text-dark); margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 1rem; color: var(--text-mid); line-height: 1.7; max-width: 500px; }
+
+  /* ── FADE UP ── */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 76px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #FDFAF5 0%, #EEF9F9 50%, #FFF5F3 100%);
+  }
+  .hero-blobs { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.45; }
+  .blob-1 { width: 500px; height: 500px; background: var(--teal-pale); top: -120px; right: -80px; }
+  .blob-2 { width: 350px; height: 350px; background: var(--coral-pale); bottom: -60px; left: 20%; }
+  .blob-3 { width: 280px; height: 280px; background: var(--gold-pale); top: 30%; left: -60px; }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 4vw 80px 8vw; position: relative; z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--teal);
+    background: var(--teal-pale); padding: 6px 14px; border-radius: 50px;
+    width: fit-content; margin-bottom: 1.5rem;
+  }
+  .hero-left h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 4.2vw, 4.6rem);
+    line-height: 1.12; color: var(--text-dark); margin-bottom: 1.2rem;
+  }
+  .h1-coral { color: var(--coral); font-style: italic; }
+  .h1-teal  { color: var(--teal); }
+  .hero-tagline { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 440px; margin-bottom: 2.2rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    padding-top: 2rem; border-top: 2px dashed var(--teal-pale);
+  }
+  .stat-item { display: flex; flex-direction: column; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--teal); }
+  .stat-label { font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.04em; margin-top: 2px; }
+
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 80px 8vw 80px 2vw; position: relative; z-index: 1;
+  }
+  .hero-image-wrap { position: relative; width: 360px; height: 460px; }
+  .hero-image-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 200px 200px 120px 120px; display: block;
+    border: 4px solid white;
+    box-shadow: 0 20px 60px rgba(14,124,123,0.2);
+  }
+  .hero-badge {
+    position: absolute; bottom: 30px; left: -40px;
+    background: white; border-radius: 18px; padding: 14px 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+    display: flex; align-items: center; gap: 12px; font-size: 0.82rem;
+    border-left: 4px solid var(--gold);
+  }
+  .badge-icon { font-size: 1.8rem; }
+  .badge-text strong { display: block; font-weight: 700; color: var(--text-dark); }
+  .badge-text span { color: var(--text-light); }
+  .hero-decor {
+    position: absolute; top: 20px; right: 10px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 14px; padding: 12px 18px;
+    font-size: 0.82rem; font-weight: 700; color: white;
+    box-shadow: 0 4px 16px rgba(230,168,23,0.4);
+  }
+
+  /* ── SERVICES ── */
+  #services {
+    background: linear-gradient(160deg, #F0FBFB 0%, #FFFDF9 100%);
+    position: relative; overflow: hidden;
+  }
+  #services::before {
+    content: '🦷'; font-size: 180px; position: absolute;
+    right: 5%; top: 10%; opacity: 0.04; pointer-events: none;
+  }
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .services-header-left { max-width: 520px; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.4rem;
+    margin-bottom: 3rem;
+  }
+  .service-card {
+    background: white; border-radius: 22px; padding: 28px 24px;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .service-card:nth-child(1) { border-top: 4px solid var(--teal); }
+  .service-card:nth-child(2) { border-top: 4px solid var(--coral); }
+  .service-card:nth-child(3) { border-top: 4px solid var(--gold); }
+  .service-card:nth-child(4) { border-top: 4px solid var(--purple); }
+  .service-card:nth-child(5) { border-top: 4px solid var(--green); }
+  .service-card:nth-child(6) { border-top: 4px solid var(--teal); }
+  .service-card:nth-child(7) { border-top: 4px solid var(--coral); }
+  .service-card:nth-child(8) { border-top: 4px solid var(--gold); }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  .service-icon-wrap {
+    width: 52px; height: 52px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 1rem;
+  }
+  .service-card:nth-child(1) .service-icon-wrap { background: var(--teal-pale); }
+  .service-card:nth-child(2) .service-icon-wrap { background: var(--coral-pale); }
+  .service-card:nth-child(3) .service-icon-wrap { background: var(--gold-pale); }
+  .service-card:nth-child(4) .service-icon-wrap { background: var(--purple-pale); }
+  .service-card:nth-child(5) .service-icon-wrap { background: var(--green-pale); }
+  .service-card:nth-child(6) .service-icon-wrap { background: var(--teal-pale); }
+  .service-card:nth-child(7) .service-icon-wrap { background: var(--coral-pale); }
+  .service-card:nth-child(8) .service-icon-wrap { background: var(--gold-pale); }
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.08rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+  .service-card p { font-size: 0.87rem; color: var(--text-light); line-height: 1.6; }
+  .services-cta-bar {
+    text-align: center; padding: 2.5rem;
+    background: linear-gradient(135deg, var(--teal-pale), var(--coral-pale));
+    border-radius: 24px;
+  }
+  .services-cta-bar p { font-size: 1.05rem; color: var(--text-mid); margin-bottom: 1.2rem; }
+
+  /* ── ABOUT ── */
+  #about { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: center; background: white; }
+  .about-img-wrap { position: relative; }
+  .about-img-bg {
+    width: 100%; aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--teal-pale) 0%, var(--purple-pale) 100%);
+    border-radius: 28px; position: relative; overflow: hidden;
+  }
+  .about-img-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-credentials {
+    position: absolute; bottom: -18px; right: -18px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    color: white; border-radius: 18px; padding: 16px 22px;
+    box-shadow: 0 8px 28px rgba(14,124,123,0.4);
+  }
+  .about-credentials strong { display: block; font-size: 1.1rem; margin-bottom: 2px; }
+  .about-credentials span { font-size: 0.82rem; opacity: 0.85; }
+  .award-badge {
+    position: absolute; top: -14px; left: -14px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: white; border-radius: 50%; width: 70px; height: 70px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 700; text-align: center; line-height: 1.3;
+    box-shadow: 0 6px 20px rgba(230,168,23,0.5);
+  }
+  .about-text { padding-bottom: 20px; }
+  .about-bio { font-size: 0.96rem; line-height: 1.85; color: var(--text-mid); margin-bottom: 1.2rem; }
+  .achievement-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
+  .achievement-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.9rem; color: var(--text-mid); line-height: 1.5;
+    background: var(--cream); border-radius: 12px; padding: 10px 14px;
+    border-left: 3px solid var(--gold);
+  }
+  .achievement-list li::before { content: '🏅'; font-size: 1rem; flex-shrink: 0; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--coral) 0%, #FF8A65 50%, var(--gold) 100%);
+    padding: 60px 8vw; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '😁'; font-size: 200px; position: absolute;
+    right: 5%; top: -30px; opacity: 0.08; pointer-events: none;
+  }
+  .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); color: white; margin-bottom: 0.8rem; }
+  .cta-banner p { color: rgba(255,255,255,0.88); font-size: 1.05rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-banner-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {
+    background: linear-gradient(135deg, var(--text-dark) 0%, #16213E 100%);
+    color: white; position: relative; overflow: hidden;
+  }
+  #testimonials::before {
+    content: '"'; font-family: 'Playfair Display', serif;
+    font-size: 400px; position: absolute; top: -80px; right: 5%;
+    color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none;
+  }
+  #testimonials .section-label { color: var(--gold-light); }
+  #testimonials .section-label::after { background: var(--gold-light); }
+  #testimonials .section-title { color: white; }
+  .testimonials-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; margin-bottom: 3rem; }
+  .testi-card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 22px; padding: 28px; backdrop-filter: blur(8px);
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .testi-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--coral), var(--gold));
+  }
+  .testi-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.12); }
+  .testi-stars { font-size: 0.95rem; letter-spacing: 3px; margin-bottom: 1rem; }
+  .testi-card:nth-child(1) .testi-stars { color: var(--gold-light); }
+  .testi-card:nth-child(2) .testi-stars { color: var(--coral-light); }
+  .testi-card:nth-child(3) .testi-stars { color: var(--teal-light); }
+  .testi-card:nth-child(4) .testi-stars { color: var(--gold-light); }
+  .testi-text { font-size: 0.93rem; line-height: 1.75; color: rgba(255,255,255,0.85); margin-bottom: 1.2rem; font-style: italic; }
+  .testi-author { font-size: 0.85rem; font-weight: 600; color: white; }
+  .testi-role { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+  .testi-cta-bar {
+    text-align: center; padding: 2.5rem;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+  }
+  .testi-cta-bar p { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 1.2rem; }
+
+  /* ── BOOKING ── */
+  #booking { background: linear-gradient(160deg, #F5FFFE 0%, var(--cream) 100%); }
+  .booking-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
+  .booking-info p { font-size: 0.96rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 2rem; }
+  .contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-mid); }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-icon.teal  { background: var(--teal-pale); }
+  .contact-icon.coral { background: var(--coral-pale); }
+  .contact-icon.gold  { background: var(--gold-pale); }
+  .contact-icon.green { background: var(--green-pale); }
+  .contact-detail strong { font-weight: 600; color: var(--text-dark); }
+  .social-pills { display: flex; gap: 0.8rem; margin-top: 1.8rem; flex-wrap: wrap; }
+  .social-pill { padding: 10px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .social-pill.insta { background: linear-gradient(135deg, #F77737, #C13584); color: white; }
+  .social-pill.fb    { background: #1877F2; color: white; }
+  .social-pill.wa    { background: #25D366; color: white; }
+  .social-pill:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+
+  .booking-form {
+    background: white; border-radius: 28px; padding: 36px;
+    box-shadow: 0 12px 50px rgba(14,124,123,0.12);
+    border-top: 5px solid var(--teal);
+  }
+  .booking-form h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.4rem; color: var(--text-dark); }
+  .booking-form .form-sub { font-size: 0.88rem; color: var(--text-light); margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label { display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; color: var(--text-mid); margin-bottom: 6px; text-transform: uppercase; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px 16px;
+    border: 2px solid #EEF0F4; border-radius: 14px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.92rem; color: var(--text-dark);
+    background: var(--cream); outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); }
+  .form-group textarea { resize: vertical; min-height: 85px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%; padding: 15px;
+    background: linear-gradient(135deg, var(--coral), var(--coral-light));
+    color: white; border: none; border-radius: 50px;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: all 0.25s; margin-top: 0.5rem;
+    box-shadow: 0 6px 20px rgba(232,81,58,0.4);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,81,58,0.5); }
+
+  .map-wrap { margin-top: 4rem; border-radius: 24px; overflow: hidden; height: 300px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border: 3px solid var(--teal-pale); }
+  .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--text-dark); color: rgba(255,255,255,0.7); padding: 60px 8vw 28px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4vw; margin-bottom: 3rem; }
+  .footer-brand .nav-logo { font-size: 1.5rem; display: block; margin-bottom: 1rem; }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 280px; }
+  .footer-social { display: flex; gap: 0.8rem; margin-top: 1.4rem; }
+  .footer-social a {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); color: white;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 1rem; transition: background 0.2s;
+  }
+  .footer-social a:hover { background: var(--teal); }
+  .footer-col h4 { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: white; font-weight: 600; margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.55rem; }
+  .footer-col ul li a { text-decoration: none; color: rgba(255,255,255,0.6); font-size: 0.88rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; flex-wrap: wrap; gap: 0.5rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #home { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 6vw; }
+    #about { grid-template-columns: 1fr; }
+    .about-img-wrap { display: none; }
+    .booking-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .services-header { flex-direction: column; align-items: flex-start; }
+    .testimonials-header { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 70px 6vw; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    .cta-banner-btns { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Ek<span>Dantaya</span></div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#booking" class="nav-cta">📅 Book Now</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">🦷 Dental Excellence in Nagpur</div>
+    <h1>Your Smile,<br/>Our <span class="h1-coral">Finest</span><br/><span class="h1-teal">Craft.</span></h1>
+    <p class="hero-tagline">Compassionate, expert dental care by Dr. Yashshree Nagargoje — bringing big-city clinical experience right here to Nagpur.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-coral">📅 Book Appointment</a>
+      <a href="#services" class="btn-teal">Our Services →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">12+</span><span class="stat-label">Dental Camps</span></div>
+      <div class="stat-item"><span class="stat-num">15K+</span><span class="stat-label">Patients Served</span></div>
+      <div class="stat-item"><span class="stat-num">3+</span><span class="stat-label">Years Experience</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-wrap">
+      <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80" alt="Dr. Yashshree Nagargoje"/>
+      <div class="hero-badge">
+        <span class="badge-icon">🏅</span>
+        <div class="badge-text"><strong>BMC Awardee</strong><span>Covid Warrior 2020–21</span></div>
+      </div>
+      <div class="hero-decor">BDS · MPH</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header fade-up">
+    <div class="services-header-left">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Complete Dental Care<br/>Under One Roof</h2>
+      <p class="section-sub">From routine cleanings to cosmetic transformations — expert treatments for the whole family.</p>
+    </div>
+    <a href="#booking" class="btn-coral">📅 Book Appointment</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon-wrap">🦷</div>
+      <h3>Dental Cleaning & Scaling</h3>
+      <p>Professional cleaning to remove plaque, tartar, and stains — keeping your gums healthy and smile bright.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon-wrap">🔆</div>
+      <h3>Teeth Whitening</h3>
+      <p>Safe, effective whitening treatments that remove discolouration and give you a visibly brighter smile.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon-wrap">🧩</div>
+      <h3>Tooth-Coloured Fillings</h3>
+      <p>Natural-looking composite fillings to restore decayed or damaged teeth with a seamless finish.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon-wrap">👑</div>
+      <h3>Crowns & Bridges</h3>
+      <p>Custom-crafted crowns and bridges to restore strength and aesthetics to damaged or missing teeth.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon-wrap">🌿</div>
+      <h3>Root Canal Treatment</h3>
+      <p>Painless, modern root canal therapy to save infected teeth and eliminate discomfort effectively.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon-wrap">📐</div>
+      <h3>Orthodontic Consultation</h3>
+      <p>Expert consultation for braces and aligners to correct misaligned teeth and achieve a perfect smile.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon-wrap">🍼</div>
+      <h3>Paediatric Dentistry</h3>
+      <p>Gentle, child-friendly dental care making young patients feel safe and comfortable at every visit.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon-wrap">🔍</div>
+      <h3>Dental X-Rays & Diagnosis</h3>
+      <p>Advanced diagnostic imaging to detect issues early and plan treatments with precision and accuracy.</p>
+    </div>
+  </div>
+  <div class="services-cta-bar fade-up">
+    <p>Not sure which treatment you need? Book a <strong>free consultation</strong> and we'll guide you!</p>
+    <a href="#booking" class="btn-coral">📅 Book a Free Consultation</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img-wrap fade-up">
+    <div class="about-img-bg">
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Dr. Yashshree Nagargoje"/>
+    </div>
+    <div class="about-credentials"><strong>Dr. Yashshree</strong><span>BDS · MPH</span></div>
+    <div class="award-badge">🏅<br/>BMC<br/>Awardee</div>
+  </div>
+  <div class="about-text fade-up">
+    <div class="section-label">Meet Your Doctor</div>
+    <h2 class="section-title">Dr. Yashshree<br/>Nagargoje</h2>
+    <p class="about-bio">Dr. Yashshree Nagargoje is a dedicated dental professional with a strong commitment to community health and patient well-being. A BDS and MPH graduate, she has spent years bridging the gap between clinical excellence and public health.</p>
+    <p class="about-bio">During the COVID-19 pandemic, she served as a frontline Covid Warrior with the BMC, managing multiple CCC-2 centres and earning accolades for her extraordinary dedication during India's toughest healthcare challenge.</p>
+    <p class="about-bio">She then served as Head Dentist at Adani Hospital, Adani Township — providing care to 15,000+ residents and conducting 12+ dental camps with 100+ attendees each.</p>
+    <ul class="achievement-list">
+      <li>Recognised by BMC for outstanding COVID-19 contributions</li>
+      <li>Managed 4+ CCC-2 centres across Mumbai during the pandemic</li>
+      <li>Led dental outreach for 15,000+ residents at Adani Township</li>
+      <li>Conducted 12+ dental health camps with 100+ attendees each</li>
+    </ul>
+    <a href="#booking" class="btn-teal">📅 Book with Dr. Yashshree</a>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready for a Healthier, Brighter Smile?</h2>
+  <p>Join hundreds of happy patients who trust EkDantaya for all their dental needs. Book your appointment today!</p>
+  <div class="cta-banner-btns">
+    <a href="#booking" class="btn-white">📅 Book Appointment Now</a>
+    <a href="https://wa.me/919503448121" class="btn-white">💬 WhatsApp Us</a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header fade-up">
+    <div>
+      <div class="section-label">Patient Stories</div>
+      <h2 class="section-title">Smiles We've<br/>Transformed</h2>
+    </div>
+    <a href="#booking" class="btn-gold">📅 Be Our Next Happy Patient</a>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Dr. Yashshree made my root canal completely painless. I was terrified going in, but she explained every step calmly. Walked out smiling — literally!"</p>
+      <div class="testi-author">Rohit Sharma</div>
+      <div class="testi-role">Adani Township Resident</div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I brought my daughter for her first dental visit and she wasn't scared at all. Dr. Yashshree has such a warm approach — we both left happy."</p>
+      <div class="testi-author">Priya Deshmukh</div>
+      <div class="testi-role">Mother of 2, Nagpur</div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The dental camp at our society was incredibly well-organised. Over 120 of us were checked up in a single day. Highly professional and thorough."</p>
+      <div class="testi-author">Anil Mehta</div>
+      <div class="testi-role">Society Secretary, Mumbai</div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"My teeth whitening results were stunning. She was honest about what was achievable and delivered exactly that. Will definitely be returning!"</p>
+      <div class="testi-author">Sneha Kulkarni</div>
+      <div class="testi-role">Patient, Nagpur</div>
+    </div>
+  </div>
+  <div class="testi-cta-bar fade-up">
+    <p>Hundreds of happy smiles and counting — yours could be next! 😁</p>
+    <a href="#booking" class="btn-coral">📅 Book Your Appointment Today</a>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-wrap">
+    <div class="booking-info fade-up">
+      <div class="section-label">Book a Visit</div>
+      <h2 class="section-title">Schedule Your<br/>Appointment</h2>
+      <p>Ready for a healthier, brighter smile? Fill in the form and we'll confirm your appointment within 24 hours. Walk-ins welcome!</p>
+      <div class="contact-detail">
+        <div class="contact-icon teal">📞</div>
+        <div><strong>+91 95034 48121</strong><br/><small style="color:var(--text-light)">Call or WhatsApp</small></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon coral">✉️</div>
+        <div><strong>dr.yashshree@yahoo.com</strong><br/><small style="color:var(--text-light)">Email us anytime</small></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon gold">📍</div>
+        <div><strong>Nagpur, Maharashtra</strong><br/><small style="color:var(--text-light)">Exact address on confirmation</small></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon green">🕙</div>
+        <div><strong>10:00 AM – 5:00 PM</strong><br/><small style="color:var(--text-light)">Tue–Sun · Mondays Closed</small></div>
+      </div>
+      <div class="social-pills">
+        <a href="#" class="social-pill insta">📸 Instagram</a>
+        <a href="#" class="social-pill fb">👍 Facebook</a>
+        <a href="https://wa.me/919503448121" class="social-pill wa">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="booking-form fade-up">
+      <h3>Request an Appointment</h3>
+      <p class="form-sub">We'll call you back to confirm within a few hours.</p>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="Rahul"/></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+      </div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"/></div>
+      <div class="form-group"><label>Preferred Date</label><input type="date"/></div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Dental Cleaning & Scaling</option>
+          <option>Teeth Whitening</option>
+          <option>Tooth-Coloured Fillings</option>
+          <option>Root Canal Treatment</option>
+          <option>Crowns & Bridges</option>
+          <option>Paediatric Dentistry</option>
+          <option>Orthodontic Consultation</option>
+          <option>Dental X-Rays & Diagnosis</option>
+          <option>General Consultation</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Additional Notes</label><textarea placeholder="Any specific concerns or questions..."></textarea></div>
+      <button class="form-submit" onclick="handleBooking()">📅 Confirm Appointment Request →</button>
+    </div>
+  </div>
+  <div class="map-wrap fade-up">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119014.86764958737!2d78.9946!3d21.1458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0a5a31faf13%3A0x3f0b0b0b0b0b0b0b!2sNagpur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1625000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="nav-logo">Ek<span>Dantaya</span></span>
+      <p>Your smile is our finest craft. Compassionate dental care with clinical excellence, right here in Nagpur.</p>
+      <div class="footer-social">
+        <a href="#" title="Instagram">📸</a>
+        <a href="#" title="Facebook">👍</a>
+        <a href="https://wa.me/919503448121" title="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Doctor</a></li>
+        <li><a href="#testimonials">Patient Reviews</a></li>
+        <li><a href="#booking">Book Appointment</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919503448121">+91 95034 48121</a></li>
+        <li><a href="mailto:dr.yashshree@yahoo.com">dr.yashshree@yahoo.com</a></li>
+        <li><a href="#">Nagpur, Maharashtra</a></li>
+        <li><a href="#">Mon: Closed</a></li>
+        <li><a href="#">Tue–Sun: 10am–5pm</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 EkDantaya Dental Clinic. All rights reserved.</span>
+    <span style="color:rgba(255,255,255,0.4);">Dr. Yashshree Nagargoje · BDS · MPH</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (links.style.display === 'flex') {
+      links.style.display = 'none';
+    } else {
+      links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:#FDFAF5;padding:2rem 8vw;gap:1.5rem;border-bottom:2px solid #C8EEEE;z-index:99;';
+    }
+  }
+
+  function handleBooking() {
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = '✅ Request Sent! We\'ll confirm soon.';
+    btn.style.background = 'linear-gradient(135deg, #2D9E5F, #4CC38A)';
+    btn.disabled = true;
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => { document.querySelector('.nav-links').style.display = 'none'; });
+  });
+</script>
+</body>
+</html>
